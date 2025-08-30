@@ -6,7 +6,8 @@
   <title>Sakocutz — Coming Soon</title>
   <style>
     :root{--bg:#0e0e10;--fg:#eaeaea;--muted:#a1a1aa;--accent:#14b8a6}
-    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Inter}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Inter}
     .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
     .card{width:100%;max-width:720px;background:#121215;border:1px solid #1f1f22;border-radius:24px;padding:28px}
     .row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
@@ -16,7 +17,8 @@
     .badge{display:inline-block;background:rgba(20,184,166,.12);color:var(--accent);border:1px solid rgba(20,184,166,.35);padding:6px 10px;border-radius:999px;font-weight:600;font-size:12px}
     .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
     .btn{border:1px solid #2a2a2e;background:#18181b;color:#fff;padding:12px 16px;border-radius:12px;font-weight:600;text-decoration:none}
-    .btn:hover{border-color:#3a3a40}.btn-accent{background:var(--accent);border-color:var(--accent);color:#061412}
+    .btn:hover{border-color:#3a3a40}
+    .btn-accent{background:var(--accent);border-color:var(--accent);color:#061412}
     form{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
     input{flex:1;min-width:220px;border:1px solid #2a2a2e;background:#0f0f12;color:#fff;padding:12px 14px;border-radius:12px}
     footer{margin-top:22px;padding-top:16px;border-top:1px dashed #2a2a2e;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#8d8d94;font-size:14px}
@@ -27,6 +29,7 @@
   <div class="wrap">
     <div class="card">
       <div class="row">
+        <!-- ✅ Correct logo filename -->
         <img class="logo" src="sakocutzlogo.png" alt="Sakocutz Logo">
         <div>
           <span class="badge">Sakocutz • Tinley Park, IL</span>
@@ -48,7 +51,8 @@
       </footer>
     </div>
   </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>
+    document.getElementById('y').textContent=new Date().getFullYear()
+  </script>
 </body>
 </html>
-
