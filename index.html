@@ -1,207 +1,54 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Phone, MapPin, Instagram, Facebook, Clock, Mail, Sparkles, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-
-const Container = ({ children, className = "" }) => (
-  <div className={`mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>
-);
-
-const SectionTitle = ({ eyebrow, title, subtitle }) => (
-  <div className="text-center mb-10">
-    {eyebrow && (
-      <p className="uppercase tracking-widest text-xs font-semibold text-gray-400">{eyebrow}</p>
-    )}
-    <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">{title}</h2>
-    {subtitle && <p className="text-gray-400 mt-2 max-w-2xl mx-auto">{subtitle}</p>}
-  </div>
-);
-
-const services = [
-  { name: "Urban Fade (Skin/Taper)", price: "$35", desc: "Crisp fade with detailed blend. Sheen finish + aftercare." },
-  { name: "Razor Line + Enhancement", price: "$25", desc: "Razor line-up with optional fibers/enhancement for camera-ready edges." },
-  { name: "Cut + Beard Sculpt", price: "$45", desc: "Full cut paired with beard fade/shape, hot towel + razor." },
-  { name: "Design Add‑On", price: "$15+", desc: "Custom part or graphic design. Price varies by complexity." },
-  { name: "Kid’s Fade (under 12)", price: "$25", desc: "Patience, fresh blend, and picture‑day ready." },
-  { name: "Hot Towel Shave", price: "$30", desc: "Classic shave, steam + post‑shave treatment." },
-];
-
-const testimonials = [
-  { name: "Dre M.", quote: "Edges on point every time. Bro brought my beard back to life—photos hit different now." },
-  { name: "Keisha T.", quote: "Booked for my son before pictures—fade was flawless and he was on time. Respect." },
-  { name: "Nate R.", quote: "Clean shop energy, zero rush, precise with the razor. Locked in my bi‑weekly slot." },
-];
-
-// Updated gallery with barber‑specific cuts only (removed dog/irrelevant photos)
-const gallery = [
-  "/gallery/fade1.jpg",
-  "/gallery/fade2.jpg",
-  "/gallery/fade3.jpg",
-  "/gallery/fade4.jpg",
-  "/gallery/fade5.jpg",
-  "/gallery/fade6.jpg",
-];
-
-export default function SakocutzLanding() {
-  const [sending, setSending] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'ok' | 'error'>('idle');
-  const comingSoon = true; // Toggle off when you're ready to go live
-
-  const FORM_ENDPOINT = "https://formspree.io/f/xblaorvj";
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSending(true);
-    setStatus('idle');
-    try {
-      const form = e.currentTarget;
-      const data = new FormData(form);
-      if (data.get('company')) {
-        setSending(false);
-        setStatus('ok');
-        form.reset();
-        return;
-      }
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data,
-      });
-      if (res.ok) {
-        setStatus('ok');
-        form.reset();
-      } else {
-        setStatus('error');
-      }
-    } catch (err) {
-      setStatus('error');
-    } finally {
-      setSending(false);
-    }
-  };
-
-  return (
-    <div className="font-sans bg-neutral-950 text-white">
-      {/* NAVBAR */}
-      <header className="sticky top-0 z-40 backdrop-blur bg-neutral-950/80 border-b border-white/10">
-        <Container className="flex items-center justify-between h-16">
-          <a href="#home" className="flex items-center gap-3 font-bold text-lg">
-            <img src="/logo-sakocutz.png" alt="Sakocutz Logo" className="h-8 w-auto" />
-            <span className="sr-only">Sakocutz</span>
-          </a>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-300">
-            <a href="#services" className="hover:text-white">Services</a>
-            <a href="#gallery" className="hover:text-white">Gallery</a>
-            <a href="#about" className="hover:text-white">About</a>
-            <a href="#booking" className="hover:text-white">Book</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
-          </nav>
-        </Container>
-      </header>
-
-      {/* HERO */}
-      <section id="home" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.06),transparent_50%)]" />
-        <Container className="py-20 sm:py-28 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <img src="/logo-sakocutz.png" alt="Sakocutz Logo" className="h-20 mx-auto mb-6" />
-            <h1 className="text-5xl font-black">Sakocutz</h1>
-            <p className="mt-4 text-xl text-gray-300">Barbering coming soon. Stay sharp, stay ready.</p>
-            <p className="mt-2 text-gray-400">Licensing in progress — bookings open soon via Booksy.</p>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* SERVICES PREVIEW */}
-      <section id="services" className="py-16 sm:py-24 bg-neutral-900">
-        <Container>
-          <SectionTitle eyebrow="Menu Preview" title="Services Coming Soon" subtitle="Here’s a taste of what’s on deck." />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((s) => (
-              <Card key={s.name} className="rounded-2xl bg-neutral-950 border-white/10 shadow-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center justify-between text-xl text-white">
-                    <span>{s.name}</span>
-                    <span className="font-black">{s.price}</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300 text-sm">{s.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sakocutz — Coming Soon</title>
+  <style>
+    :root{--bg:#0e0e10;--fg:#eaeaea;--muted:#a1a1aa;--accent:#14b8a6}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Inter}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{width:100%;max-width:720px;background:#121215;border:1px solid #1f1f22;border-radius:24px;padding:28px}
+    .row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+    .logo{width:88px;height:88px;border-radius:16px;object-fit:contain;background:#0b0b0c;border:1px solid #232327}
+    h1{font-size:32px;margin:0 0 6px}
+    p{margin:6px 0;color:var(--muted)}
+    .badge{display:inline-block;background:rgba(20,184,166,.12);color:var(--accent);border:1px solid rgba(20,184,166,.35);padding:6px 10px;border-radius:999px;font-weight:600;font-size:12px}
+    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{border:1px solid #2a2a2e;background:#18181b;color:#fff;padding:12px 16px;border-radius:12px;font-weight:600;text-decoration:none}
+    .btn:hover{border-color:#3a3a40}.btn-accent{background:var(--accent);border-color:var(--accent);color:#061412}
+    form{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+    input{flex:1;min-width:220px;border:1px solid #2a2a2e;background:#0f0f12;color:#fff;padding:12px 14px;border-radius:12px}
+    footer{margin-top:22px;padding-top:16px;border-top:1px dashed #2a2a2e;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#8d8d94;font-size:14px}
+    a{color:#b3f3ec;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="row">
+        <img class="logo" src="images/logo.png" alt="Sakocutz Logo" />
+        <div>
+          <span class="badge">Sakocutz • Tinley Park, IL</span>
+          <h1>Fresh fades. Clean lines. <span style="color:var(--accent)">Coming soon.</span></h1>
+          <p>Licensing in progress. Booking will go live on Booksy. Drop your email and be first to know.</p>
+          <div class="cta">
+            <a class="btn btn-accent" href="#" aria-disabled="true">Booksy — coming soon</a>
+            <a class="btn" href="mailto:hello@sakocutz.com">Email</a>
           </div>
-        </Container>
-      </section>
-
-      {/* GALLERY */}
-      <section id="gallery" className="py-16 sm:py-24">
-        <Container>
-          <SectionTitle eyebrow="Preview" title="Sample Looks" subtitle="Stock images for now — real cuts coming soon." />
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-            {gallery.map((src, i) => (
-              <div key={i} className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow ring-1 ring-white/10">
-                <img src={src} alt={`Gallery ${i+1}`} className="absolute inset-0 w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* BOOKING (COMING SOON NOTICE) */}
-      <section id="booking" className="py-16 sm:py-24 bg-neutral-900 text-center">
-        <Container>
-          <SectionTitle eyebrow="Appointments" title="Booking Opens Soon" subtitle="Follow on IG or check back to lock in your slot." />
-          <p className="text-gray-400 mt-4">Booksy integration will be live once licensing is complete.</p>
-          <Button disabled className="mt-6 rounded-2xl bg-gray-700 text-gray-400 cursor-not-allowed">
-            Booking Not Yet Available
-          </Button>
-        </Container>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="py-16 sm:py-24">
-        <Container>
-          <SectionTitle eyebrow="Contact" title="Tap In" subtitle="Want to stay updated? Drop your info." />
-          <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
-            {status === 'ok' && (
-              <div className="w-full rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-200 p-3 text-sm">
-                Thanks! You’re on the list. I’ll email you when booking opens.
-              </div>
-            )}
-            {status === 'error' && (
-              <div className="w-full rounded-xl bg-red-600/20 border border-red-500/30 text-red-200 p-3 text-sm">
-                Sorry—something went wrong. Try again, or DM me on Instagram.
-              </div>
-            )}
-
-            <input type="text" name="company" className="hidden" tabIndex={-1} autoComplete="off" />
-            <Input name="name" required placeholder="Full name" className="bg-neutral-900 border-white/10 text-white placeholder:text-gray-500" />
-            <Input name="email" required type="email" placeholder="Email" className="bg-neutral-900 border-white/10 text-white placeholder:text-gray-500" />
-            <Button type="submit" disabled={sending} className="w-full rounded-2xl bg-white text-black hover:bg-gray-200">
-              {sending ? "Sending…" : "Notify Me When Live"}
-            </Button>
-            <p className="text-xs text-gray-500 text-center">Protected by Formspree. I’ll only use your email for launch updates.</p>
+          <form action="https://formspree.io/f/xblaorvj" method="POST">
+            <input type="email" name="email" placeholder="you@example.com" required />
+            <button class="btn" type="submit">Notify Me</button>
           </form>
-        </Container>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-10 border-t border-white/10 bg-neutral-950">
-        <Container className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
-          <div className="flex items-center gap-3">
-            <img src="/logo-sakocutz.png" alt="Sakocutz Logo" className="h-8 w-auto" />
-            <p>© {new Date().getFullYear()} Sakocutz — Stay Sharp, Stay Ready.</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="#services" className="hover:text-white">Services</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
-          </div>
-        </Container>
+        </div>
+      </div>
+      <footer>
+        <div>© <span id="y"></span> Sakocutz. All rights reserved.</div>
+        <div><a href="#" aria-disabled="true">Instagram</a> · <a href="#" aria-disabled="true">TikTok</a></div>
       </footer>
     </div>
-  );
-}
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
+
