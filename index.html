@@ -3,60 +3,123 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sakocutz — Coming Soon</title>
+  <title>Sakocutz — Urban Barbering</title>
+  <link rel="icon" href="sakocutz-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0e0e10;--fg:#eaeaea;--muted:#a1a1aa;--accent:#14b8a6}
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Inter}
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-    .card{width:100%;max-width:720px;background:#121215;border:1px solid #1f1f22;border-radius:24px;padding:28px}
-    .row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-    .logo{width:88px;height:88px;border-radius:16px;object-fit:contain;background:#0b0b0c;border:1px solid #232327}
-    h1{font-size:32px;margin:0 0 6px}
-    p{margin:6px 0;color:var(--muted)}
-    .badge{display:inline-block;background:rgba(20,184,166,.12);color:var(--accent);border:1px solid rgba(20,184,166,.35);padding:6px 10px;border-radius:999px;font-weight:600;font-size:12px}
-    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .btn{border:1px solid #2a2a2e;background:#18181b;color:#fff;padding:12px 16px;border-radius:12px;font-weight:600;text-decoration:none}
-    .btn:hover{border-color:#3a3a40}
-    .btn-accent{background:var(--accent);border-color:var(--accent);color:#061412}
-    form{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
-    input{flex:1;min-width:220px;border:1px solid #2a2a2e;background:#0f0f12;color:#fff;padding:12px 14px;border-radius:12px}
-    footer{margin-top:22px;padding-top:16px;border-top:1px dashed #2a2a2e;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#8d8d94;font-size:14px}
-    a{color:#b3f3ec;text-decoration:none}
+    body {margin:0;background:#0b0b0b;color:#fff;font-family:Montserrat, sans-serif}
+    a{color:#D4AF37;text-decoration:none}
+    img{max-width:100%;border-radius:12px}
+    .container{max-width:1200px;margin:auto;padding:0 20px}
+    header{padding:20px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222}
+    header img{height:50px}
+    nav a{margin:0 10px}
+    section{padding:60px 0;border-bottom:1px solid #222}
+    h2{font-size:28px;margin-bottom:20px;color:#D4AF37}
+    .pricing,.services,.testimonials,.gallery{display:grid;gap:20px}
+    .services{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+    .pricing{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .testimonials{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .gallery{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .card,.price-card,.t-card{background:#141414;padding:20px;border-radius:12px;border:1px solid #222}
+    .price-row{display:flex;justify-content:space-between;margin:8px 0}
+    .price{color:#D4AF37;font-weight:700}
+    footer{padding:20px;text-align:center;color:#aaa;border-top:1px solid #222}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="row">
-        <!-- ✅ Correct logo filename -->
-        <img class="logo" src="sakocutzlogo.png" alt="Sakocutz Logo">
-        <div>
-          <span class="badge">Sakocutz • Tinley Park, IL</span>
-          <h1>Fresh fades. Clean lines. <span style="color:var(--accent)">Coming soon.</span></h1>
-          <p>Licensing in progress. Booking will go live on Booksy. Drop your email and be first to know.</p>
-          <div class="cta">
-            <!-- Replace this link with your actual Booksy URL -->
-            <a class="btn btn-accent" href="https://booksy.com/your-link" target="_blank">Booksy — Book Here</a>
-            <a class="btn" href="mailto:hello@sakocutz.com">Email</a>
-          </div>
-          <form action="https://formspree.io/f/xblaorvj" method="POST">
-            <input type="email" name="email" placeholder="you@example.com" required />
-            <button class="btn" type="submit">Notify Me</button>
-          </form>
-        </div>
-      </div>
-      <footer>
-        <div>© <span id="y"></span> Sakocutz. All rights reserved.</div>
-        <div>
-          <!-- Replace with your actual Instagram profile -->
-          <a href="https://instagram.com/sakocutz" target="_blank">Instagram</a>
-        </div>
-      </footer>
+  <header>
+    <div class="brand">
+      <img src="sakocutz-logo.png" alt="Sakocutz Logo">
     </div>
-  </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#booksy">Book Now</a>
+    </nav>
+  </header>
+
+  <section class="hero container">
+    <h1>Sharp fades. Clean tapers. <span style="color:#D4AF37">Sakocutz</span>.</h1>
+    <p>Premium barbering with a focus on crisp lines and detail work. Book online, pull up fresh, leave legendary.</p>
+    <a class="cta" id="booksy" href="#">Book on Booksy</a>
+  </section>
+
+  <section id="services" class="container">
+    <h2>Services</h2>
+    <div class="services">
+      <div class="card"><h3>Skin Fade</h3><p>Ultra-clean blend with precision detail.</p></div>
+      <div class="card"><h3>Taper Fade</h3><p>Low, mid, or high taper — sharp and versatile.</p></div>
+      <div class="card"><h3>Beard Trim & Shape</h3><p>Contours, bulk removal, and hot towel finish.</p></div>
+      <div class="card"><h3>Lineup (Edge Up)</h3><p>Crisp hairline & beard lines.</p></div>
+      <div class="card"><h3>Kids Cut</h3><p>Patient, detailed, and camera-ready.</p></div>
+      <div class="card"><h3>Hair Designs</h3><p>Custom parts & patterns by request.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing" class="container">
+    <h2>Pricing</h2>
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Fades & Cuts</h3>
+        <div class="price-row"><span>Haircut</span><span class="price">$30</span></div>
+        <div class="price-row"><span>Kids Cut</span><span class="price">$25</span></div>
+      </div>
+      <div class="price-card">
+        <h3>Beard & Add‑ons</h3>
+        <div class="price-row"><span>Beard Trim</span><span class="price">$20</span></div>
+        <div class="price-row"><span>Lineup</span><span class="price">$15</span></div>
+      </div>
+      <div class="price-card">
+        <h3>Premium</h3>
+        <div class="price-row"><span>Designs (Start)</span><span class="price">$10+</span></div>
+        <div class="price-row"><span>After‑hours</span><span class="price">$20+</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="container">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="fade1.png" alt="Skin Fade">
+      <img src="fade2.png" alt="Taper Fade">
+      <img src="fade3.png" alt="Low Burst Fade">
+      <img src="fade4.png" alt="Crop Fade">
+      <img src="fade5.png" alt="Afro Taper">
+      <img src="fade6.png" alt="Design Fade">
+    </div>
+  </section>
+
+  <section id="testimonials" class="container">
+    <h2>What Clients Say</h2>
+    <div class="testimonials">
+      <div class="t-card">★★★★★<br>“Cleanest fade I’ve had in a minute. Attention to detail is crazy.”<br>— Jalen</div>
+      <div class="t-card">★★★★★<br>“Beard came out perfect and the lineup is razor sharp. Booking again.”<br>— Marco</div>
+      <div class="t-card">★★★★★<br>“Professional, on time, and the vibe is right. Highly recommend.”<br>— Andre</div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <h2>Contact</h2>
+    <form action="https://formspree.io/f/xblaorvj" method="POST">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" placeholder="Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Sakocutz. All rights reserved.</p>
+  </footer>
+
   <script>
-    document.getElementById('y').textContent=new Date().getFullYear()
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
