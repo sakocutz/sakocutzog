@@ -487,6 +487,13 @@ h3 {
 
   .nav-toggle {
     display: block;
+    position: fixed;
+    top: 31px;
+    right: 18px;
+    z-index: 25;
+    flex: 0 0 auto;
+    border-color: rgba(212, 175, 55, 0.42);
+    background: rgba(0, 0, 0, 0.42);
   }
 
   .site-nav {
@@ -525,21 +532,29 @@ h3 {
     min-height: 88vh;
     padding-top: 128px;
     padding-bottom: 52px;
-    background-position: 62% center;
+    background-position: 58% center;
   }
 
   .hero-overlay {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.93), rgba(0, 0, 0, 0.58));
+  }
+
+  h1 {
+    max-width: 620px;
+    font-size: clamp(2.35rem, 8vw, 4.2rem);
+    line-height: 0.96;
   }
 
   .hero-actions {
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
+    gap: 12px;
   }
 
   .hero-actions .btn {
     width: 100%;
+    min-height: 56px;
   }
 
   .section {
@@ -571,6 +586,18 @@ h3 {
     align-items: flex-start;
   }
 
+  .booking-card .btn {
+    order: 3;
+    width: 100%;
+    min-height: 56px;
+  }
+
+  .qr-code {
+    order: 4;
+    width: min(190px, 76vw);
+    margin-top: 4px;
+  }
+
 }
 
 @media (max-width: 460px) {
@@ -585,8 +612,26 @@ h3 {
     transform: translateY(6px);
   }
 
+  .nav-toggle {
+    top: 31px;
+  }
+
   .hero {
     padding-top: 116px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 9.4vw, 2.75rem);
+    line-height: 0.95;
+  }
+
+  .hero-area {
+    font-size: 0.96rem;
+  }
+
+  .hero-copy {
+    margin-bottom: 18px;
+    font-size: 1rem;
   }
 
   .location-strip {
