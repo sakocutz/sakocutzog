@@ -1,173 +1,212 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sakocutz — Urban Barbering</title>
-  <link rel="icon" href="sakocutz-scissors-logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#0b0b0b;--bg2:#121212;--gold:#D4AF37;--gold2:#b8921a;--ring:#242424;--text:#ffffff;--muted:#bdbdbd;--radius:16px}
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
-    a{color:var(--gold);text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:1200px;margin:auto;padding:0 20px}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sakocutz by Sako. Clean fades, detailed beard work, and sharp barber services by appointment in Tinley Park, Illinois."
+    />
+    <title>Sakocutz | Clean Fades & Beard Work</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/sakocutzlogo.png" />
+    <link rel="apple-touch-icon" href="assets/sakocutzlogo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#home" aria-label="Sakocutz home">
+        <img src="assets/sakocutzlogo.png" alt="Sakocutz" />
+      </a>
 
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:rgba(11,11,11,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--ring);padding:10px 0}
-    header .brand{display:flex;align-items:center;gap:12px}
-    header img{height:44px}
-    nav a{margin:0 10px;padding:8px 12px;border-radius:999px;border:1px solid transparent}
-    nav a:hover{border-color:var(--ring);background:var(--bg2)}
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-controls="site-nav"
+        aria-expanded="false"
+        data-nav-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    /* Hero */
-    .hero{position:relative;isolation:isolate;padding:70px 0}
-    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 400px at 20% -10%,rgba(212,175,55,.18),transparent 60%),radial-gradient(600px 300px at 100% 20%,rgba(255,255,255,.06),transparent 60%)}
-    .hero h1{font-size:clamp(34px,6vw,62px);line-height:1.05;margin:0 0 10px;font-weight:800}
-    .hero p{color:var(--muted);max-width:720px}
-    .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(145deg,var(--gold),var(--gold2));color:#111;padding:12px 18px;border-radius:999px;font-weight:800;border:1px solid #5b4b11;box-shadow:0 8px 26px rgba(212,175,55,.25)}
-    .cta:hover{transform:translateY(-1px)}
+      <nav class="site-nav" id="site-nav" data-nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#instagram">Instagram</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-    /* Sections */
-    section{padding:60px 0;border-bottom:1px solid var(--ring)}
-    h2{font-size:28px;margin-bottom:18px;color:var(--gold)}
-    .card,.price-card,.t-card{background:var(--bg2);padding:20px;border-radius:var(--radius);border:1px solid var(--ring)}
+    <main>
+      <section class="hero" id="home" aria-label="Sakocutz hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>Clean fades. Sharp beard work.</h1>
+          <p class="hero-area">Serving Tinley Park and surrounding areas.</p>
+          <p class="hero-copy">
+            Sakocutz delivers precise cuts, tight blends, and beard shaping with
+            a polished finish.
+          </p>
+          <div class="booking-group">
+            <div class="hero-actions">
+              <a
+                class="btn btn-primary"
+                href="https://book.thecut.co/Gary-Sultanian-gswiscs"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book on The Cut
+              </a>
+              <a class="btn btn-secondary" href="#services">View Services</a>
+            </div>
+            <p class="booking-note">Book instantly through The Cut.</p>
+          </div>
+        </div>
+      </section>
 
-    /* Grids */
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-    .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+      <section class="location-strip" aria-label="Location and availability">
+        <span>Tinley Park, Illinois</span>
+        <span>By Appointment Only</span>
+      </section>
 
-    .price-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--ring)}
-    .price{color:var(--gold);font-weight:800}
+      <section class="section services-section" id="services">
+        <div class="section-heading">
+          <p class="eyebrow">Services</p>
+          <h2>Focused barber work with clean pricing.</h2>
+        </div>
 
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-    .gallery .tile{position:relative;border-radius:14px;overflow:hidden;background:#0f0f0f;border:1px solid var(--ring)}
-    .gallery .tile img{width:100%;height:260px;object-fit:cover;transition:transform .3s ease}
-    .gallery .tile:hover img{transform:scale(1.04)}
-    .gallery .caption{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:999px;border:1px solid var(--ring);font-size:12px}
+        <div class="services-grid">
+          <article class="service-card">
+            <img
+              class="service-image"
+              src="assets/haircut-service.png"
+              alt="Clean haircut and fade service"
+            />
+            <span class="service-icon">01</span>
+            <h3>Haircut</h3>
+            <p>Clean fades, shape-ups, tapers, and classic scissor work.</p>
+            <strong>$35</strong>
+          </article>
 
-    /* Contact */
-    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    form textarea{grid-column:1 / -1}
-    input,textarea,button{background:#0f0f0f;border:1px solid var(--ring);border-radius:12px;color:#fff;padding:12px}
-    button{background:linear-gradient(145deg,var(--gold),var(--gold2));color:#111;border:1px solid #5b4b11;font-weight:800}
+          <article class="service-card">
+            <img
+              class="service-image"
+              src="assets/beard-service.png"
+              alt="Detailed beard trim and lineup service"
+            />
+            <span class="service-icon">02</span>
+            <h3>Beard</h3>
+            <p>Lineup, shaping, trimming, and detailed edge work.</p>
+            <strong>$15</strong>
+          </article>
 
-    footer{padding:20px;text-align:center;color:#aaa;border-top:1px solid var(--ring)}
+          <article class="service-card featured-card">
+            <img
+              class="service-image"
+              src="assets/combo-service.png"
+              alt="Haircut and beard grooming combo service"
+            />
+            <span class="service-icon">03</span>
+            <h3>Haircut + Beard</h3>
+            <p>A complete cut and beard service for a sharp full finish.</p>
+            <strong>$45</strong>
+          </article>
+        </div>
+      </section>
 
-    @media (max-width:640px){form{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="brand" style="flex-direction:column;align-items:center;gap:6px">
-        <img src="sakocutz-scissors-logo.png" alt="Sakocutz logo" style="height:80px">
-        <div class="wordmark" style="font-size:22px;font-weight:800">Sako<span class="accent">cutz</span></div>
-      </div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contact">Contact</a>
-      <a href="#booksy">Book Now</a>
-    </nav>
-  </header>
+      <section class="section about-section" id="about">
+        <div class="about-panel">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2>Meet Sako.</h2>
+          </div>
+          <p>
+            Sako is the brand behind Sakocutz, built around sharp execution,
+            clean fades, detailed beard work, and a polished chair-to-street
+            finish. Every appointment is handled with precision, balance, and a
+            luxury standard.
+          </p>
+        </div>
+      </section>
 
-  <section class="hero">
-    <div class="container">
-      <div class="kicker" style="letter-spacing:.12em;color:var(--gold);font-weight:600;margin-bottom:8px">URBAN • BOLD • PRECISION</div>
-      <h1>FRESH FADES &amp; CUTS</h1>
-      <p>Premium barbering with a focus on crisp lines and detail work. Book online, pull up fresh, leave legendary.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px">
-        <a class="cta" id="booksy" href="#">Book on Booksy</a>
-        <a class="cta" href="#gallery" style="background:transparent;color:var(--gold);border:1px solid var(--ring)">See the work</a>
-      </div>
-      <div style="margin-top:10px;color:var(--muted);font-size:12px">Replace the Booksy link when your profile is live.</div>
-    </div>
-  </section>
+      <section class="section instagram-section" id="instagram">
+        <div class="section-heading">
+          <p class="eyebrow">Instagram</p>
+          <h2>See the latest work.</h2>
+        </div>
+        <div class="instagram-panel">
+          <div class="ig-handle">
+            <span>@sakocutz</span>
+            <p>Fresh fades, beard transformations, and appointment updates.</p>
+          </div>
+          <a
+            class="btn btn-secondary"
+            href="https://www.instagram.com/sakocutz/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Instagram
+          </a>
+        </div>
+      </section>
 
-  <section id="services" class="container">
-    <h2>Services</h2>
-    <div class="services">
-      <div class="card"><h3>Skin Fade</h3><p>Ultra-clean blend with precision detail.</p></div>
-      <div class="card"><h3>Taper Fade</h3><p>Low, mid, or high taper — sharp and versatile.</p></div>
-      <div class="card"><h3>Beard Trim & Shape</h3><p>Contours, bulk removal, and hot towel finish.</p></div>
-      <div class="card"><h3>Lineup (Edge Up)</h3><p>Crisp hairline & beard lines.</p></div>
-      <div class="card"><h3>Kids Cut</h3><p>Patient, detailed, and camera-ready.</p></div>
-      <div class="card"><h3>Hair Designs</h3><p>Custom parts & patterns by request.</p></div>
-    </div>
-  </section>
+      <section class="section qr-section" aria-label="The Cut QR code">
+        <div class="booking-card">
+          <p class="eyebrow">Quick Booking</p>
+          <h2>Book an Appointment</h2>
+          <p>Scan to book directly on The Cut</p>
+          <img
+            class="qr-code"
+            src="assets/thecut-qr.png"
+            alt="QR code to book Sakocutz on The Cut"
+          />
+          <a
+            class="btn btn-primary"
+            href="https://book.thecut.co/Gary-Sultanian-gswiscs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book Online
+          </a>
+        </div>
+      </section>
 
-  <section id="pricing" class="container">
-    <h2>Pricing</h2>
-    <div class="pricing">
-      <div class="price-card">
-        <h3>Fades & Cuts</h3>
-        <div class="price-row"><span>Haircut</span><span class="price">$30</span></div>
-        <div class="price-row"><span>Kids Cut</span><span class="price">$25</span></div>
-      </div>
-      <div class="price-card">
-        <h3>Beard & Add‑ons</h3>
-        <div class="price-row"><span>Beard Trim</span><span class="price">$20</span></div>
-        <div class="price-row"><span>Lineup</span><span class="price">$15</span></div>
-      </div>
-      <div class="price-card">
-        <h3>Premium</h3>
-        <div class="price-row"><span>Designs (Start)</span><span class="price">$10+</span></div>
-        <div class="price-row"><span>After‑hours</span><span class="price">$20+</span></div>
-      </div>
-    </div>
-  </section>
+      <section class="section contact-section" id="contact">
+        <div class="contact-content">
+          <p class="eyebrow">Contact</p>
+          <h2>Ready for a clean cut?</h2>
+          <p>
+            Book directly through The Cut for appointment availability and
+            scheduling.
+          </p>
+          <div class="booking-group">
+            <a
+              class="btn btn-primary"
+              href="https://book.thecut.co/Gary-Sultanian-gswiscs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book on The Cut
+            </a>
+            <p class="booking-note">Book instantly through The Cut.</p>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <section id="gallery" class="container">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <div class="tile"><img src="fade1.png" alt="Low skin fade"><span class="caption">Low Skin Fade</span></div>
-      <div class="tile"><img src="fade2.png" alt="Mid taper fade"><span class="caption">Mid Taper Fade</span></div>
-      <div class="tile"><img src="fade3.png" alt="High burst fade"><span class="caption">High Burst Fade</span></div>
-      <div class="tile"><img src="fade4.png" alt="Crop fade"><span class="caption">Textured Crop</span></div>
-      <div class="tile"><img src="fade5.png" alt="Afro taper"><span class="caption">Afro Taper</span></div>
-      <div class="tile"><img src="fade6.png" alt="Design work"><span class="caption">Design Work</span></div>
-    </div>
-      <div class="tile"><img src="fade2.png" alt="Mid taper fade"><span class="caption">Mid Taper</span></div>
-      <div class="tile"><img src="fade3.png" alt="High burst fade"><span class="caption">High Burst</span></div>
-      <div class="tile"><img src="fade4.png" alt="Crop fade"><span class="caption">Textured Crop</span></div>
-      <div class="tile"><img src="fade5.png" alt="Afro taper"><span class="caption">Afro Taper</span></div>
-      <div class="tile"><img src="fade6.png" alt="Design fade"><span class="caption">Design Work</span></div>
-    </div>
-  </section>
+    <footer class="site-footer">
+      <img src="assets/sakocutzlogo.png" alt="Sakocutz" />
+      <p>&copy; <span data-year></span> Sakocutz. All rights reserved.</p>
+    </footer>
 
-  <section id="testimonials" class="container">
-    <h2>What Clients Say</h2>
-    <div class="testimonials">
-      <div class="t-card">★★★★★<br>“Cleanest fade I’ve had in a minute. Attention to detail is crazy.”<br>— Jalen</div>
-      <div class="t-card">★★★★★<br>“Beard came out perfect and the lineup is razor sharp. Booking again.”<br>— Marco</div>
-      <div class="t-card">★★★★★<br>“Professional, on time, and the vibe is right. Highly recommend.”<br>— Andre</div>
-    </div>
-  </section>
-
-  <section id="contact" class="container">
-    <h2>Contact</h2>
-    <form action="https://formspree.io/f/xblaorvj" method="POST">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="message" placeholder="Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>© <span id="year"></span> Sakocutz. All rights reserved.</p>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
-
